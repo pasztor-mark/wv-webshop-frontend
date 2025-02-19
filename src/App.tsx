@@ -2,6 +2,7 @@ import './App.css'
 import {BrowserRouter, Route, Routes} from "react-router";
 import PageLayout from "@/components/PageLayout.tsx";
 import Authenticate from "@/pages/Authenticate.tsx";
+import Home from './pages/Home';
 
 function App() {
     return (
@@ -13,7 +14,7 @@ function App() {
                            <Route index element={<Authenticate/>}/>
                     </Route>
                     <Route path={"*"} element={<PageLayout/>}>
-                        <Route index element={<></>}/>
+                        <Route index element={<Home/>}/>
                     </Route>
                 </Route>
             </Routes>

@@ -16,7 +16,22 @@
 }
 
 @layer theme {
-    primary {
-        @apply bg-neutral-900 text-neutral-100 dark:bg-neutral-300 dark:text-neutral-900;
+    .primary {
+        @apply dark:bg-neutral-900 bg-neutral-200;
+    }
+    .secondary {
+        @apply dark:bg-neutral-800 bg-neutral-300
+    }
+    p, h1, h2, h3, h4, h5, h6, a, b, i, sup, sub, div, input, span, label {
+        @apply dark:text-neutral-100 text-neutral-950
+    }
+    input {
+        @apply placeholder:text-white opacity-50
+    }
+
+}
+@layer base {
+    .stroke {
+        @apply border border-neutral-900 dark:border-white
     }
 }

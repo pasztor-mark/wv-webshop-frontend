@@ -1,9 +1,13 @@
 import { useTheme } from "@/components/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
-import { toggleColorScheme } from "@/lib/functions";
+import { initialValidation } from "@/lib/api/auth/General";
+import { useEffect } from "react";
 
 export default function Home() {
-    const {theme, setTheme} = useTheme()
+    useEffect(() => {
+        initialValidation("/auth", false)
+    }, [])
+    const { setTheme} = useTheme()
     return (
         <div>
 

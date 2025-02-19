@@ -1,4 +1,4 @@
-import { LoginRequest, RegisterPostRequest, RegisterRequest } from "@/lib/types";
+import { RegisterPostRequest, RegisterRequest } from "@/lib/types";
 import apiFetch from "../apiClient";
 
 export function validateRegister(request: RegisterRequest): RegisterPostRequest | null {

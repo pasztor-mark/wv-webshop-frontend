@@ -1,22 +1,13 @@
 import { Button } from "@/components/ui/button";
-import checkAuth from "@/lib/api/auth/General";
+import { initialValidation } from "@/lib/api/auth/General";
 import logIn from "@/lib/api/auth/LogIn";
 import Register from "@/lib/api/auth/Register";
 import { AuthenticationTexts } from "@/lib/texts";
 import { RegisterRequest } from "@/lib/types";
 import { FormEvent, useEffect, useState } from "react";
-import { replace } from "react-router";
 
 function Authenticate() {
-    async function initialValidation() {
-        const res = await checkAuth()
-        if (res) {
-            window.location.replace("/")
-        }
-        else {
-            console.log("nem fasza")
-        }
-    }
+
     useEffect(() => {
         initialValidation()
     }, [])

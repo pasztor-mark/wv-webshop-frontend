@@ -18,16 +18,16 @@ function Authenticate() {
                 email: form.email,
                 password: form.password
             })
+            console.log("login")
             if (res) {
-                if (res === true) console.log("fasza");
-                else console.log("nem fasza");
-            }
+                if (res === true) window.location.replace("/")
+                }
             return
         }
+        console.log("register")
         const res = await Register(form)
         if (res) {
-            if (res === true) console.log("fasza");
-            else console.log("nem fasza");
+            if (res === true) window.location.replace("/")
         }
         return
 

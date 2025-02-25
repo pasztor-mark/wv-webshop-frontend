@@ -11,10 +11,10 @@ export default function Home() {
     return (
         <div>
 
-        <Button  onClick={() => {console.log("fasz"); setTheme("dark")}}>
+        <Button  onClick={() => {setTheme("dark")}}>
             toggle
         </Button>
-        <Button  onClick={() => {console.log("fasz"); setTheme("light")}}>
+        <Button  onClick={() => {setTheme("light")}}>
             toggle
         </Button>
         </div>

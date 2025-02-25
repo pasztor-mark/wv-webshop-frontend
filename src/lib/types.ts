@@ -27,3 +27,10 @@ export interface RegisterPostRequest {
     password: string
     name: string
 }
+export interface Item {
+    id: string
+    name: string
+    price: number
+    description: string
+    image: string
+}

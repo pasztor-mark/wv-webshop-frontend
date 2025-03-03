@@ -23,14 +23,14 @@ function PageLayout() {
     checkUser()
   }, []);
   return (
-    <div className={"w-screen h-screen primary overflow-hidden"}>
+    <div className={"w-screen primary overflow-hidden"}>
       <header className="highlight flex justify-center items-center">
         <p className="text-black">
           <span className="font-bold text-black">FLASH SALE!</span> Enjoy sales
           up to 30% off!
         </p>
       </header>
-      <main className="flex flex-row gap-2 overflow-hidden">
+      <main className="flex flex-row gap-2 ">
       <aside className="basis-1/6 border-r overflow-hidden border-highlight h-screen">
           <nav className="flex flex-col justify-between">
               <div className=" border-b-2 border-r-2 border-highlight justify-center rounded-br-full secondary py-2 flex gap-4 items-center">
@@ -74,7 +74,7 @@ function PageLayout() {
           </nav>
           <img className="absolute bottom-0" src="/triangle.png"/>
       </aside>
-        <div className="mt-2">
+        <div className="mt-2 basis-5/6 mx-auto overflow-scroll">
           <Outlet />
         </div>
       </main>

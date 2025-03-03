@@ -13,7 +13,7 @@ export function validateRegister(request: RegisterRequest): RegisterPostRequest 
 
 export default async function Register(request: RegisterRequest) {
     const data = validateRegister(request)
-    
+        console.log(data)
     if (data === null) return
      
     const req = await apiFetch<User>("/auth/register", "POST", data)

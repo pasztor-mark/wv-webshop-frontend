@@ -33,7 +33,7 @@
         @apply placeholder:text-white opacity-50 border-highlight border-2
     }
     button {
-        @apply text-lg font-bold py-1
+        @apply text-lg font-bold py-1 hover:cursor-pointer
     }
     .nav-item {
         @apply dark:bg-neutral-800 bg-neutral-300 border-b-highlight border-b-2 rounded-b-xl py-2 hover:cursor-pointer text-xl font-semibold text-center flex items-center justify-between px-4

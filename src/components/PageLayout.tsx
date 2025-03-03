@@ -4,13 +4,23 @@ import {FaHouse, FaPlus, FaAward, FaCartShopping, FaStar, FaTableCellsColumnLock
 import { useEffect } from "react";
 import { useAuthentication } from "./contexts/AuthenticationContext";
 import { Avatar, AvatarFallback } from "./ui/avatar";
+import { getSelf } from "@/lib/api/auth/General";
 
 function PageLayout() {
   const { user, setUser } = useAuthentication();
-  useEffect(() => {
+  async function checkUser() {
+
+    const user = await getSelf()
     if (user === null) {
-      setUser(JSON.parse(localStorage.getItem("user") || "{}"));
+      setUser(null);
+      localStorage.removeItem("user");
+    } else {
+      setUser(user);
+      
     }
+  }
+  useEffect( () => {
+    checkUser()
   }, []);
   return (
     <div className={"w-screen h-screen primary overflow-hidden"}>
@@ -27,12 +37,12 @@ function PageLayout() {
 
             <Avatar className="border-2 p-4 border-highlight">
               <AvatarFallback className="font-bold text-xl">
-                {user?.name.split(" ")[0][0].toUpperCase()}
-                {user?.name.split(" ")[1][0].toUpperCase()}
+                {user && user.name[0]}
+                {user && user.name[1]}
               </AvatarFallback>
             </Avatar>
             <p className="font-semibold text-xl">
-              {user?.name}
+              {user && user.name}
             </p>
             </div>
             <ul className="flex flex-col mx-2 mt-4 gap-4">

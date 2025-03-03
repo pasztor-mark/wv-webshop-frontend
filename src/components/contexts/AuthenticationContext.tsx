@@ -1,8 +1,9 @@
-import { invalidateToken } from "@/lib/api/auth/General";
+import { getSelf, invalidateToken } from "@/lib/api/auth/General";
 import logIn from "@/lib/api/auth/LogIn";
 import Register from "@/lib/api/auth/Register";
 import { LoginRequest, RegisterRequest, User } from "@/lib/types";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import { toast } from "sonner";
 
 interface AuthenticationContextType {
   user: User | null;
@@ -31,27 +32,27 @@ export const AuthenticationProvider: React.FC<{
 }> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
     
-
+  
   async function login(data: LoginRequest) {
     const res = await logIn(data);
     if (res) {
-        console.log("message", res);
-        setUser(res);
-        localStorage.setItem("user", JSON.stringify(res));
-        window.location.href = ("/");
+      const self = await getSelf()
+      setUser(self);
+      window.location.href = ("/");
       }
+      else toast("Check your credentials")
     }
     async function register(data: RegisterRequest) {
       const res = await Register(data);
       if (res) {
-      localStorage.setItem("user", JSON.stringify(res));
-      setUser(res);
+        const self =  await getSelf()
+        setUser(self)
       window.location.href = ("/");
     }
   }
 
   async function logout() {
-    invalidateToken()
+    await invalidateToken()
     setUser(null);
     localStorage.removeItem("user");
     window.location.href = ("/auth");

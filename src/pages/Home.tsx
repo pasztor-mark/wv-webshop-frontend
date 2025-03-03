@@ -5,11 +5,9 @@ import { initialValidation } from "@/lib/api/auth/General";
 import { useEffect } from "react";
 
 export default function Home() {
-    useEffect(() => {
-        initialValidation("/auth", false)
-    }, [])
+
     const { setTheme} = useTheme()
-    const {user, logout}    = useAuthentication()  
+    const {user, logout} = useAuthentication()  
     console.log(user);
     return (
         <div>

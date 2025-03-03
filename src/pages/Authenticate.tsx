@@ -3,22 +3,26 @@ import { Button } from "@/components/ui/button";
 import { initialValidation } from "@/lib/api/auth/General";
 import { AuthenticationTexts } from "@/lib/texts";
 import { RegisterRequest } from "@/lib/types";
+import { validateLogin, validateRegister } from "@/lib/validation/validation";
 import { FormEvent, useEffect, useState } from "react";
 
 function Authenticate() {
   const { login, register } = useAuthentication();
 
-  useEffect(() => {
-    initialValidation();
-  }, []);
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (authFunction === "LOGIN") {
+      if (!validateLogin(form.email, form.password).valid) {
+        return;
+      }
       login({
         email: form.email,
         password: form.password,
       });
     } else {
+      if (!validateRegister(form.email, form.password, form.confirmPassword).valid) {
+        return;
+      }
       register(form);
     }
   }

@@ -2,6 +2,13 @@ import { ReactNode } from "react";
 
 export type Theme = "dark" | "light" | "system";
 
+export interface User {
+    id: number
+    email: string
+    name: string
+    role: string
+}
+
 export type ThemeContextType = {
     children: ReactNode;
     defaultTheme?: Theme;

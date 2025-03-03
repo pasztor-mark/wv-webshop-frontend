@@ -9,6 +9,7 @@
 }
 
 @theme inline {
+    --color-highlight: #EACE68;
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);
     --radius-lg: var(--radius);
@@ -23,15 +24,27 @@
         @apply dark:bg-neutral-800 bg-neutral-300
     }
     p, h1, h2, h3, h4, h5, h6, a, b, i, sup, sub, div, input, span, label {
-        @apply dark:text-neutral-100 text-neutral-950
+        @apply dark:text-neutral-100 text-neutral-950 
     }
-    input {
-        @apply placeholder:text-white opacity-50
-    }
-
+    
 }
 @layer base {
+    input {
+        @apply placeholder:text-white opacity-50 border-highlight border-2
+    }
+    button {
+        @apply text-lg font-bold py-1
+    }
+    .nav-item {
+        @apply dark:bg-neutral-800 bg-neutral-300 border-b-highlight border-b-2 rounded-b-xl py-2 hover:cursor-pointer text-xl font-semibold text-center flex items-center justify-between px-4
+    }
+    .highlight {
+        @apply bg-highlight text-black
+    }
     .stroke {
         @apply border border-neutral-900 dark:border-white
+    }
+    .card-l {
+        @apply rounded-tl-2xl rounded-br-2xl
     }
 }

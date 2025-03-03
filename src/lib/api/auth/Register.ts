@@ -1,4 +1,4 @@
-import { RegisterPostRequest, RegisterRequest } from "@/lib/types";
+import { RegisterPostRequest, RegisterRequest, User } from "@/lib/types";
 import apiFetch from "../apiClient";
 
 export function validateRegister(request: RegisterRequest): RegisterPostRequest | null {
@@ -16,14 +16,15 @@ export default async function Register(request: RegisterRequest) {
     
     if (data === null) return
      
-    const req = await apiFetch("/auth/register", "POST", data)
+    const req = await apiFetch<User>("/auth/register", "POST", data)
     if (req) {
         if (req.status !== 200) {
             console.error("Register failed")
         }
         else {
             console.log("Success!")
-            return true   
+            window.location.replace("/")
+            return req.data!   
         }
     }
     return false

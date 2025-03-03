@@ -21,3 +21,6 @@ export async function initialValidation(route = "/", auth = true) {
         }
     }
 }
+export async function invalidateToken() {
+  await apiFetch("/auth/invalidate", "DELETE");
+}

@@ -6,6 +6,7 @@
 
 :root {
     --radius: 0.6rem;
+    overflow: hidden;
 }
 
 @theme inline {
@@ -29,8 +30,14 @@
     
 }
 @layer base {
-    input {
+    input, textarea {
         @apply placeholder:text-white opacity-50 border-highlight border-2
+    }
+    .form-group {
+        @apply flex-col flex text-lg my-2
+    }
+    .form-group label {
+        @apply text-lg font-semibold flex items-center gap-2
     }
     button {
         @apply text-lg font-bold py-1 hover:cursor-pointer

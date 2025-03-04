@@ -21,16 +21,12 @@ export async function getSelf() {
 export async function initialValidation(route = "/", auth = true) {
   const res = await checkAuth();
   if (auth) {
-
-      if (res) {
+    
+      if (!res) {
           window.location.replace(route);
         }
-        }
-    else {
-        if (!res) {
-            window.location.replace(route)
-        }
-    }
+
+  }
 }
 export async function invalidateToken() {
   await apiFetch("/auth/invalidate", "DELETE");

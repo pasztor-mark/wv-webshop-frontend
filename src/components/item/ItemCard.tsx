@@ -3,7 +3,7 @@ import { FaCartShopping, FaEllipsisVertical, FaStar } from "react-icons/fa6";
 
 export function ItemCard() {
   return (
-    <div className="flex flex-col overflow-hidden group basis-11/12 md:basis-6/12 xl:basis-1/4 p-3 rounded-xl">
+    <div className="flex flex-col  group basis-11/12 md:basis-6/12 2xl:basis-1/4 p-3 rounded-xl">
       <div className=" border-3 overflow-hidden border-highlight group-odd:rounded-br-4xl group-odd:rounded-tl-4xl group-even:rounded-bl-4xl group-even:rounded-tr-4xl">
         <div className="basis-2/3 aspect-square secondary"></div>
         <hr className="m-3 text-highlight border-2 rounded-full" />

@@ -5,7 +5,7 @@ export type Theme = "dark" | "light" | "system";
 export interface User {
     id: number
     email: string
-    name: string
+    username: string
     role: string
 }
 
@@ -36,6 +36,12 @@ export interface RegisterPostRequest {
 }
 export interface Item {
     id: string
+    name: string
+    price: number
+    description: string
+    image: string
+}
+export interface CreateItemRequest {
     name: string
     price: number
     description: string

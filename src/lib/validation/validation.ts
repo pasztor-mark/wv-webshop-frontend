@@ -77,3 +77,28 @@ export function validateRegister(
     message: t.registrationSuccess,
   };
 }
+export function validateNewItem(name: string, price: number, description: string) {
+  const errors: string[] = [];
+
+  if (name.length < 3) {
+    errors.push("Name is too short");
+  }
+
+  if (price < 0) {
+    errors.push("Price is too low");
+  }
+
+  if (description.length < 10) {
+    errors.push("Description is too short");
+  }
+
+  if (errors.length > 0) {
+    toast(errors[0]);
+    return { valid: false, messages: errors };
+  }
+
+  return {
+    valid: true,
+    message: "Item created successfully",
+  };
+}

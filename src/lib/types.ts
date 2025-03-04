@@ -8,6 +8,18 @@ export interface User {
     username: string
     role: string
 }
+export interface UserResponse {
+    id: number
+    email: string
+    name: string
+    role: string
+}
+export type Paged<T> = {
+    content: T[]
+    totalPages: number
+    totalElements: number
+    pageNumber: number
+}
 
 export type ThemeContextType = {
     children: ReactNode;
@@ -40,6 +52,7 @@ export interface Item {
     price: number
     description: string
     image: string
+    author: UserResponse
 }
 export interface CreateItemRequest {
     name: string

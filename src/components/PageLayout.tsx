@@ -3,25 +3,29 @@ import {FaHouse, FaPlus, FaAward, FaCartShopping, FaStar, FaTableCellsColumnLock
 import { useEffect } from "react";
 import { useAuthentication } from "./contexts/AuthenticationContext";
 import { Avatar, AvatarFallback } from "./ui/avatar";
-import { getSelf, initialValidation } from "@/lib/api/auth/General";
+import checkAuth, { getSelf, initialValidation, invalidateToken } from "@/lib/api/auth/General";
 
 function PageLayout() {
   const { user, setUser } = useAuthentication();
   const navigate = useNavigate()
   async function checkUser() {
-    initialValidation("/auth", true)
-    const user = await getSelf()
-    if (user === null) {
-      setUser(null);
-      localStorage.removeItem("user");
-    } else {
-      setUser(user);
-      
+      const user = await getSelf()
+      if (user === null) {
+        setUser(null);
+        localStorage.removeItem("user");
+        console.log("user is null");
+        await invalidateToken()
+        navigate("/auth")
+      } else {
+        localStorage.setItem("user", JSON.stringify(user));
+        setUser(user);
+        console.log(user)      
     }
   }
   useEffect( () => {
     checkUser()
   }, []);
+  if (user === null) navigate("/auth") 
   return (
     <div className={"w-screen primary"}>
       <header className="highlight flex justify-center  items-center">

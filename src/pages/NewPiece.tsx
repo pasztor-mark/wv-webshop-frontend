@@ -4,9 +4,11 @@ import { CreateItemRequest, Item } from "@/lib/types";
 import { validateNewItem } from "@/lib/validation/validation";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { FaIdCard, FaMoneyBill1Wave, FaScroll } from "react-icons/fa6";
+import { useNavigate } from "react-router";
 import { toast } from "sonner";
 
 export default function NewPiece() {
+  const navigate = useNavigate()
   const [newPiece, setNewPiece] = useState<CreateItemRequest>({
     name: "",
     description: "",
@@ -25,7 +27,8 @@ export default function NewPiece() {
     }
     const res = await postItem(newPiece);
     if (res) {
-        console.log(res);
+        toast("Item posted successfully")
+      navigate("/")
     }    
     else toast("An error occurred")
   }
@@ -82,7 +85,7 @@ export default function NewPiece() {
           </span>
           <input
             type="file"
-            accept="image/png,image/jpeg,image/jpg"
+            accept="image/jpeg,image/jpg"
             max={1}
             onChange={async (e) => {
                 if (e.currentTarget.files?.length === 0) return;

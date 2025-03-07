@@ -47,7 +47,7 @@ export interface RegisterPostRequest {
     name: string
 }
 export interface Item {
-    id: string
+    id: number
     name: string
     price: number
     description: string

@@ -15,3 +15,10 @@ export async function getItems(page: number) {
     }
     return null
 }
+export async function deleteItem(id: number) {
+    const req = await apiFetch(`/items/item/${id}`, "DELETE")
+    if (req && req.status === 204) {
+        return true
+    }
+    return false
+}

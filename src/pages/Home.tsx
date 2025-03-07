@@ -28,6 +28,7 @@ export default function Home() {
     fetchItems()
     console.log(items)
   }, [page]);
+  if (user)
   return (
     <div className="flex h-screen flex-col overflow-hidden p-4">
       <h1 className="text-4xl font-semibold flex">
@@ -40,7 +41,7 @@ export default function Home() {
       <section className="flex flex-row flex-wrap overflow-x-hidden mt-2 justify-between flex-1">
         {
             items && items.length > 0 && items.map((item, index) => (
-                <ItemCard key={index} item={item} />
+                <ItemCard key={index} item={item} userId={user!.id} />
             ))
         }
       </section>
